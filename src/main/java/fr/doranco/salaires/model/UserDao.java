@@ -214,6 +214,7 @@ public class UserDao implements IUserDao {
 			rs = ps.executeQuery();
 			if(rs!=null) {
 				while(rs.next()) {
+					//ajouter une liste pour les mois et leur salaire
 					salaire=new LinkedHashMap<String,Float>();
 					salaire.put(Mois.JANVIER.getValue(), rs.getFloat(Mois.JANVIER.getValue()));
 					salaire.put(Mois.FEVRIER.getValue(), rs.getFloat(Mois.FEVRIER.getValue()));
