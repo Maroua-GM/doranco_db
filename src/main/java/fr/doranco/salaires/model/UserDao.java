@@ -9,6 +9,7 @@ import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -197,7 +198,7 @@ public class UserDao implements IUserDao {
 
 	@Override
 	public Map<Short, Map<String, Float>> getSalaires(int idUser) throws Exception {
-		Map<Short,Map<String,Float>> salaires=new HashMap<Short,Map<String,Float>>();
+		Map<Short,Map<String,Float>> salaires=new LinkedHashMap<Short,Map<String,Float>>();
 		Map<String,Float> salaire=null;
 		if ( idUser < 0) {
 			throw new IllegalArgumentException("on accepte pas une valeur négative");
@@ -213,7 +214,7 @@ public class UserDao implements IUserDao {
 			rs = ps.executeQuery();
 			if(rs!=null) {
 				while(rs.next()) {
-					salaire=new HashMap<String,Float>();
+					salaire=new LinkedHashMap<String,Float>();
 					salaire.put(Mois.JANVIER.getValue(), rs.getFloat(Mois.JANVIER.getValue()));
 					salaire.put(Mois.FEVRIER.getValue(), rs.getFloat(Mois.FEVRIER.getValue()));
 					salaire.put(Mois.MARS.getValue(), rs.getFloat(Mois.MARS.getValue()));
